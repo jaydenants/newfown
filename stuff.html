@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin:0;
+            background-color:lightgray;
+        }
+        #h1{
+            font-size:40px;
+
+        }
+        #fowm{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+        #fid1{
+            border-radius: 20px;
+            background-color: white;
+        }
+        #butto{
+            background-color: white;
+            color:black;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<style>
+
+</style>
+<body> 
+        <h1 id="h1">JavaScript Form Validation</h1>
+
+    <form id="fowm">
+        <fieldset id="fid1">
+            <label for="in1">Name</label>
+            <input id="in1" type="text" placeholder="Name" required>
+            <span id="sp1"></span>
+            <label for="in2">Email</label>
+            <input id="in2" type="email" placeholder="Email" required>
+            <span id="sp2"></span>
+            <label for="in3">Leave a Message</label>
+            <input id="in3" type="text" placeholder="message" required>
+            <span id="sp3"></span>
+        </fieldset>
+        <button id="butto">Submit</button>
+    </form>
+    
+</body>
+<script>
+    var body=document.getElementById('body');
+
+    var a = document.getElementById('in1');
+    var b = document.getElementById('in2');
+    var c = document.getElementById('in3');
+    var spin = document.getElementById('butto').addEventListener('click', fowmvalidate);
+
+    let pat1 = /^[A-Za-z]{3,20}$/;
+    let pat2 = /^[A-Za-z0-9]{4,15}[@]{1}(gmail|outlook|icloud|yahoo|msn)[.]{1}(com|edu|org|gov)$/;
+    let pat3 = /[^\s]{3,}$/;
+
+
+
+    function fowmvalidate(e){
+
+        e.preventDefault();
+
+        var phonnum = a.value.trim();
+        var emma = b.value.trim()
+        var mess = c.value.trim();
+
+        var valid1 = pat1.test(phonnum);
+        var valid2 = pat2.test(emma);
+        var valid3 = pat3.test(mess);
+        console.log(valid1)
+        console.log(valid2)
+        console.log(valid3)
+
+        if(valid1===true && valid2===true && valid3===true){
+            window.alert('Thank you for your submission')
+        }
+        else{
+            window.alert('Something about your submission is wrong, please check it again')
+        }
+
+        
+    }
+
+    
+</script>
+</html>
